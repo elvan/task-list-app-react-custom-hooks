@@ -10,9 +10,10 @@ function App() {
   const fetchTasks = async (taskText) => {
     setIsLoading(true);
     setError(null);
+
     try {
       const response = await fetch(
-        'https://react-http-6b4a6.firebaseio.com/tasks.json'
+        'https://react-http-ac3a7-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json'
       );
 
       if (!response.ok) {
@@ -30,8 +31,9 @@ function App() {
       setTasks(loadedTasks);
     } catch (err) {
       setError(err.message || 'Something went wrong!');
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   useEffect(() => {
